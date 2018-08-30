@@ -27,7 +27,11 @@ export default {
     },
     timePicker: {
       am: 'AM',
-      pm: 'PM'
+      pm: 'PM',
+      nextHour: 'ora următoare',
+      nextMinute: 'minutul următor',
+      previousHour: 'ora precedentă',
+      previousMinute: 'minutul precedent'
     },
     modal: {
       cancel: 'Anulare',

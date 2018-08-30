@@ -4,13 +4,25 @@
       <tbody>
       <tr v-if="controls" class="text-center">
         <td>
-          <btn type="link" size="sm" @click="changeTime(1,1)" :disabled="readonly">
+          <btn
+            type="default"
+            size="sm"
+            style="border: none"
+            :aria-label="t('uiv.timePicker.nextHour')"
+            :disabled="readonly"
+            @click="changeTime(1,1)">
             <i :class="iconControlUp"></i>
           </btn>
         </td>
         <td>&nbsp;</td>
         <td>
-          <btn type="link" size="sm" @click="changeTime(0,1)" :disabled="readonly">
+          <btn
+            type="default"
+            size="sm"
+            style="border: none"
+            :aria-label="t('uiv.timePicker.nextMinute')"
+            :disabled="readonly"
+            @click="changeTime(0,1)">
             <i :class="iconControlUp"></i>
           </btn>
         </td>
@@ -64,13 +76,25 @@
       </tr>
       <tr v-if="controls" class="text-center">
         <td>
-          <btn type="link" size="sm" @click="changeTime(1,0)" :disabled="readonly">
+          <btn
+            type="default"
+            size="sm"
+            style="border: none"
+            :aria-label="t('uiv.timePicker.previousHour')"
+            :disabled="readonly"
+            @click="changeTime(1,0)">
             <i :class="iconControlDown"></i>
           </btn>
         </td>
         <td>&nbsp;</td>
         <td>
-          <btn type="link" size="sm" @click="changeTime(0,0)" :disabled="readonly">
+          <btn
+            type="default"
+            size="sm"
+            style="border: none"
+            :aria-label="t('uiv.timePicker.previousMinute')"
+            :disabled="readonly"
+            @click="changeTime(0,0)">
             <i :class="iconControlDown"></i>
           </btn>
         </td>

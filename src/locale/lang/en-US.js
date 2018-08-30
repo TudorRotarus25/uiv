@@ -27,7 +27,11 @@ export default {
     },
     timePicker: {
       am: 'AM',
-      pm: 'PM'
+      pm: 'PM',
+      nextHour: 'next hour',
+      nextMinute: 'next minute',
+      previousHour: 'previous hour',
+      previousMinute: 'previous minute'
     },
     modal: {
       cancel: 'Cancel',
