@@ -3,17 +3,17 @@
     <thead>
     <tr>
       <td>
-        <btn block size="sm" style="border: none" @click="goPrevYear">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.previousYear')" @click="goPrevYear">
           <i :class="iconControlLeft"></i>
         </btn>
       </td>
       <td colspan="4">
-        <btn block size="sm" style="border: none" @click="changeView()">
+        <btn block size="sm" style="border: none" :aria-label="`${year} - ${t('uiv.datePicker.goToYear')}`" @click="changeView()">
           <b>{{year}}</b>
         </btn>
       </td>
       <td>
-        <btn block size="sm" style="border: none" @click="goNextYear">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.nextYear')" @click="goNextYear">
           <i :class="iconControlRight"></i>
         </btn>
       </td>

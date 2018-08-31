@@ -33,6 +33,7 @@
       :year="currentYear"
       :icon-control-left="iconControlLeft"
       :icon-control-right="iconControlRight"
+      :locale="locale"
       @year-change="onYearChange"
       @view-change="onViewChange"/>
     <div v-if="todayBtn||clearBtn">

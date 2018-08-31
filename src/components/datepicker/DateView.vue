@@ -3,17 +3,17 @@
     <thead>
     <tr>
       <td>
-        <btn block size="sm" style="border: none" @click="goPrevMonth">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.previousMonth')" @click="goPrevMonth">
           <i :class="iconControlLeft"></i>
         </btn>
       </td>
       <td :colspan="weekNumbers?6:5">
-        <btn block size="sm" style="border: none" @click="changeView">
+        <btn block size="sm" style="border: none" :aria-label="`${yearMonthStr} - ${t('uiv.datePicker.goToMonth')}`" @click="changeView">
           <b>{{yearMonthStr}}</b>
         </btn>
       </td>
       <td>
-        <btn block size="sm" style="border: none" @click="goNextMonth">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.nextMonth')" @click="goNextMonth">
           <i :class="iconControlRight"></i>
         </btn>
       </td>
@@ -36,6 +36,7 @@
           size="sm"
           style="border: none"
           data-action="select"
+          :aria-label="getDateLabel(date)"
           :class="date.classes"
           :type="getBtnType(date)"
           :disabled="date.disabled"
@@ -164,6 +165,13 @@
           return 'info'
         } else {
           return 'default'
+        }
+      },
+      getDateLabel (date) {
+        if (this.yearMonthFormatter) {
+          return `${date.date} ${this.yearMonthFormatter(date.year, date.month)}`
+        } else {
+          return isExist(date.month) ? `${date.date} ${this.t(`uiv.datePicker.month${date.month + 1}`)} ${date.year}` : ''
         }
       },
       select (date) {

@@ -3,17 +3,17 @@
     <thead>
     <tr>
       <td>
-        <btn block size="sm" style="border: none" @click="goPrevYear">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.previousYearGroup')" @click="goPrevYear">
           <i :class="iconControlLeft"></i>
         </btn>
       </td>
       <td colspan="3">
-        <btn block size="sm" style="border: none">
+        <btn block size="sm" style="border: none" :aria-label="yearStrLabel">
           <b>{{yearStr}}</b>
         </btn>
       </td>
       <td>
-        <btn block size="sm" style="border: none" @click="goNextYear">
+        <btn block size="sm" style="border: none" :aria-label="t('uiv.datePicker.nextYearGroup')" @click="goNextYear">
           <i :class="iconControlRight"></i>
         </btn>
       </td>
@@ -37,9 +37,11 @@
 </template>
 
 <script>
+  import Locale from '../../mixins/localeMixin'
   import Btn from './../button/Btn'
 
   export default {
+    mixins: [Locale],
     components: {Btn},
     props: {
       year: Number,
@@ -61,6 +63,10 @@
       yearStr () {
         let start = this.year - this.year % 20
         return `${start} ~ ${start + 19}`
+      },
+      yearStrLabel () {
+        let start = this.year - this.year % 20
+        return `${start} ${this.t('uiv.datePicker.to')} ${start + 19}`
       }
     },
     methods: {

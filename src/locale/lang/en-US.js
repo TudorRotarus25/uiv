@@ -3,6 +3,7 @@ export default {
     datePicker: {
       clear: 'Clear',
       today: 'Today',
+      to: 'to',
       month: 'Month',
       month1: 'January',
       month2: 'February',
@@ -23,7 +24,15 @@ export default {
       week4: 'Thu',
       week5: 'Fri',
       week6: 'Sat',
-      week7: 'Sun'
+      week7: 'Sun',
+      nextMonth: 'next month',
+      nextYear: 'next year',
+      nextYearGroup: 'next year group',
+      previousMonth: 'previous month',
+      previousYear: 'previous year',
+      previousYearGroup: 'previous year group',
+      goToMonth: 'switch to the month selector view',
+      goToYear: 'switch to year selector view'
     },
     timePicker: {
       am: 'AM',
