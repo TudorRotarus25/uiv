@@ -23,7 +23,15 @@ export default {
       week4: 'J',
       week5: 'V',
       week6: 'S',
-      week7: 'D'
+      week7: 'D',
+      nextMonth: 'luna următoare',
+      nextYear: 'anul următor',
+      nextYearGroup: 'grupul de ani următor',
+      previousMonth: 'luna precedentă',
+      previousYear: 'anul precedent',
+      previousYearGroup: 'grupul de ani precedent',
+      goToMonth: 'mergi la modul de selectare a lunii',
+      goToYear: 'mergi la modul de selectare a anului'
     },
     timePicker: {
       am: 'AM',
@@ -36,6 +44,10 @@ export default {
     modal: {
       cancel: 'Anulare',
       ok: 'OK'
+    },
+    multiSelect: {
+      placeholder: 'Alege...',
+      filterPlaceholder: 'Caută...'
     }
   }
 }
