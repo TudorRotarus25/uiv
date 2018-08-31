@@ -25,22 +25,22 @@ export default {
       week5: 'Fri',
       week6: 'Sat',
       week7: 'Sun',
-      nextMonth: 'next month',
-      nextYear: 'next year',
-      nextYearGroup: 'next year group',
-      previousMonth: 'previous month',
-      previousYear: 'previous year',
-      previousYearGroup: 'previous year group',
-      goToMonth: 'switch to the month selector view',
-      goToYear: 'switch to year selector view'
+      nextMonth: 'Next month',
+      nextYear: 'Next year',
+      nextYearGroup: 'Next year group',
+      previousMonth: 'Previous month',
+      previousYear: 'Previous year',
+      previousYearGroup: 'Previous year group',
+      goToMonth: 'Switch to the month selector view',
+      goToYear: 'Switch to year selector view'
     },
     timePicker: {
       am: 'AM',
       pm: 'PM',
-      nextHour: 'next hour',
-      nextMinute: 'next minute',
-      previousHour: 'previous hour',
-      previousMinute: 'previous minute'
+      nextHour: 'Next hour',
+      nextMinute: 'Next minute',
+      previousHour: 'Previous hour',
+      previousMinute: 'Previous minute'
     },
     modal: {
       cancel: 'Cancel',

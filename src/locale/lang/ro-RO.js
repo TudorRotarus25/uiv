@@ -24,22 +24,22 @@ export default {
       week5: 'V',
       week6: 'S',
       week7: 'D',
-      nextMonth: 'luna următoare',
-      nextYear: 'anul următor',
-      nextYearGroup: 'grupul de ani următor',
-      previousMonth: 'luna precedentă',
-      previousYear: 'anul precedent',
-      previousYearGroup: 'grupul de ani precedent',
-      goToMonth: 'mergi la modul de selectare a lunii',
-      goToYear: 'mergi la modul de selectare a anului'
+      nextMonth: 'Luna următoare',
+      nextYear: 'Anul următor',
+      nextYearGroup: 'Grupul de ani următor',
+      previousMonth: 'Luna precedentă',
+      previousYear: 'Anul precedent',
+      previousYearGroup: 'Grupul de ani precedent',
+      goToMonth: 'Mergi la modul de selectare a lunii',
+      goToYear: 'Mergi la modul de selectare a anului'
     },
     timePicker: {
       am: 'AM',
       pm: 'PM',
-      nextHour: 'ora următoare',
-      nextMinute: 'minutul următor',
-      previousHour: 'ora precedentă',
-      previousMinute: 'minutul precedent'
+      nextHour: 'Ora următoare',
+      nextMinute: 'Minutul următor',
+      previousHour: 'Ora precedentă',
+      previousMinute: 'Minutul precedent'
     },
     modal: {
       cancel: 'Anulare',
