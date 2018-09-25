@@ -26,6 +26,7 @@
           block
           size="sm"
           style="border: none"
+          :aria-current="(getBtnClass(year) === 'primary')"
           :type="getBtnClass(year)"
           @click="changeView(year)">
           <span>{{year}}</span>

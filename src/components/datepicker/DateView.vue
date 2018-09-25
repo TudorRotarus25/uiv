@@ -37,6 +37,7 @@
           style="border: none"
           data-action="select"
           :aria-label="getDateLabel(date)"
+          :aria-current="isDateSelected(date) ? 'date' : null"
           :class="date.classes"
           :type="getBtnType(date)"
           :disabled="date.disabled"
@@ -153,11 +154,14 @@
       tWeekName (index) {
         return this.t(`uiv.datePicker.week${index}`)
       },
-      getBtnType (date) {
-        if (this.date &&
+      isDateSelected (date) {
+        return this.date &&
           date.date === this.date.getDate() &&
           date.month === this.date.getMonth() &&
-          date.year === this.date.getFullYear()) {
+          date.year === this.date.getFullYear()
+      },
+      getBtnType (date) {
+        if (this.isDateSelected(date)) {
           return 'primary'
         } else if (date.date === this.today.getDate() &&
           date.month === this.today.getMonth() &&

@@ -26,6 +26,8 @@
           block
           size="sm"
           style="border: none"
+          :aria-label="`${tCell(month)} ${year}`"
+          :aria-current="(getBtnClass(i*3+j) === 'primary')"
           :type="getBtnClass(i*3+j)"
           @click="changeView(i*3+j)">
           <span>{{tCell(month)}}</span>

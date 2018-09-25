@@ -44,6 +44,7 @@
           type="info"
           size="sm"
           v-if="todayBtn"
+          :aria-label="todayButtonLabel"
           @click="selectToday"
           v-text="t('uiv.datePicker.today')"
         />
@@ -168,6 +169,13 @@
           }
         }
         return limit
+      },
+      todayButtonLabel () {
+        if (this.yearMonthFormatter) {
+          return `${this.t('uiv.datePicker.today')}, ${this.now.getDate()} ${this.yearMonthFormatter(this.now.getFullYear(), this.now.getMonth())}`
+        } else {
+          return `${this.t('uiv.datePicker.today')}, ${this.now.getDate()} ${this.t(`uiv.datePicker.month${this.now.getMonth() + 1}`)} ${this.now.getFullYear()}`
+        }
       }
     },
     mounted () {
