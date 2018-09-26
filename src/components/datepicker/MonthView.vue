@@ -1,5 +1,5 @@
 <template>
-  <table role="grid" style="width: 100%">
+  <table role="grid" style="width: 100%" @keyup.prevent="onKeyUp">
     <thead>
     <tr>
       <td>
@@ -29,6 +29,8 @@
           :aria-label="`${tCell(month)} ${year}`"
           :aria-current="(getBtnClass(i*3+j) === 'primary')"
           :type="getBtnClass(i*3+j)"
+          :ref="`dateItem${i * 10 + j}`"
+          @focus="setFocusPosition(j, i)"
           @click="changeView(i*3+j)">
           <span>{{tCell(month)}}</span>
         </btn>
@@ -89,6 +91,48 @@
         } else {
           this.$emit('view-change', 'y')
         }
+      },
+      onKeyUp (event) {
+        const keyCode = event.keyCode || event.which
+
+        let x = this.focusPosition.x
+        let y = this.focusPosition.y
+
+        switch (keyCode) {
+          // left arrow
+          case 37: {
+            x--
+            break
+          }
+          // up arrow
+          case 38: {
+            y--
+            break
+          }
+          // right arrow
+          case 39: {
+            x++
+            break
+          }
+          // down arrow
+          case 40: {
+            y++
+            break
+          }
+          default: {
+            return
+          }
+        }
+
+        this.changeFocusPosition(x, y)
+      },
+      changeFocusPosition (x, y) {
+        if (this.$refs[`dateItem${y || ''}${x}`]) {
+          this.$refs[`dateItem${y || ''}${x}`][0].focus()
+        }
+      },
+      setFocusPosition (x, y) {
+        this.focusPosition = { x, y }
       }
     }
   }

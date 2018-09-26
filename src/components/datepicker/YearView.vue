@@ -1,5 +1,5 @@
 <template>
-  <table role="grid" style="width: 100%">
+  <table role="grid" style="width: 100%" @keyup.prevent="onKeyUp">
     <thead>
     <tr>
       <td>
@@ -20,14 +20,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-for="row in rows">
-      <td v-for="year in row" width="20%">
+    <tr v-for="(row, i) in rows">
+      <td v-for="(year, j) in row" width="20%">
         <btn
           block
           size="sm"
           style="border: none"
           :aria-current="(getBtnClass(year) === 'primary')"
           :type="getBtnClass(year)"
+          :ref="`dateItem${i * 10 + j}`"
+          @focus="setFocusPosition(j, i)"
           @click="changeView(year)">
           <span>{{year}}</span>
         </btn>
@@ -87,6 +89,48 @@
       changeView (year) {
         this.$emit('year-change', year)
         this.$emit('view-change', 'm')
+      },
+      onKeyUp (event) {
+        const keyCode = event.keyCode || event.which
+
+        let x = this.focusPosition.x
+        let y = this.focusPosition.y
+
+        switch (keyCode) {
+          // left arrow
+          case 37: {
+            x--
+            break
+          }
+          // up arrow
+          case 38: {
+            y--
+            break
+          }
+          // right arrow
+          case 39: {
+            x++
+            break
+          }
+          // down arrow
+          case 40: {
+            y++
+            break
+          }
+          default: {
+            return
+          }
+        }
+
+        this.changeFocusPosition(x, y)
+      },
+      changeFocusPosition (x, y) {
+        if (this.$refs[`dateItem${y || ''}${x}`]) {
+          this.$refs[`dateItem${y || ''}${x}`][0].focus()
+        }
+      },
+      setFocusPosition (x, y) {
+        this.focusPosition = { x, y }
       }
     }
   }

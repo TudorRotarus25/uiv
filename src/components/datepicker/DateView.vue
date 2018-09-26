@@ -1,5 +1,5 @@
 <template>
-  <table role="grid" style="width: 100%">
+  <table role="grid" style="width: 100%" @keyup.prevent="onKeyUp">
     <thead>
     <tr>
       <td>
@@ -26,11 +26,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-for="row in monthDayRows">
+    <tr v-for="(row, i) in monthDayRows">
       <td v-if="weekNumbers" class="text-center" style="border-right: 1px solid #eee">
         <small class="text-muted">{{getWeekNumber(row[weekStartsWith])}}</small>
       </td>
-      <td v-for="date in row">
+      <td v-for="(date, j) in row">
         <btn
           block
           size="sm"
@@ -41,6 +41,8 @@
           :class="date.classes"
           :type="getBtnType(date)"
           :disabled="date.disabled"
+          :ref="`dateItem${i * 10 + j}`"
+          @focus="setFocusPosition(j, i)"
           @click="select(date)">
           <span data-action="select" :class="{'text-muted':month!==date.month}">{{date.date}}</span>
         </btn>
@@ -149,6 +151,14 @@
         return rows
       }
     },
+    data () {
+      return {
+        focusPosition: {
+          x: 0,
+          y: 0
+        }
+      }
+    },
     methods: {
       getWeekNumber,
       tWeekName (index) {
@@ -207,6 +217,48 @@
       },
       changeView () {
         this.$emit('view-change', 'm')
+      },
+      onKeyUp (event) {
+        const keyCode = event.keyCode || event.which
+
+        let x = this.focusPosition.x
+        let y = this.focusPosition.y
+
+        switch (keyCode) {
+          // left arrow
+          case 37: {
+            x--
+            break
+          }
+          // up arrow
+          case 38: {
+            y--
+            break
+          }
+          // right arrow
+          case 39: {
+            x++
+            break
+          }
+          // down arrow
+          case 40: {
+            y++
+            break
+          }
+          default: {
+            return
+          }
+        }
+
+        this.changeFocusPosition(x, y)
+      },
+      changeFocusPosition (x, y) {
+        if (this.$refs[`dateItem${y || ''}${x}`]) {
+          this.$refs[`dateItem${y || ''}${x}`][0].focus()
+        }
+      },
+      setFocusPosition (x, y) {
+        this.focusPosition = { x, y }
       }
     }
   }
